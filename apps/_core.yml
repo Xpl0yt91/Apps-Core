@@ -167,19 +167,19 @@
 
     - name: 'Auth Check 1'
       set_fact:
-        gauth: 'http://oauth:4181'
+        auth: 'http://oauth:4181'
       when: not authcheck.stat.exists
 
     - name: 'Auth Check 2'
       set_fact:
-        gauth: ''
+        auth: ''
       when: authcheck.stat.exists
 
   when: oauth.stdout == 'good'
 
 - name: 'OAuth Exe'
   set_fact:
-    gauth: ''
+    auth: ''
   when: not oauth.stdout == 'good'
 
 - debug: msg="OAuth - {{oauth.stdout}}"
